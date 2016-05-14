@@ -75,11 +75,13 @@
           <tr>
             <td>09:00~12:00</td>
             <td>大地遊戲</td>
-            <td>WEB</td>
-            <td>JAVA程式語言</td>
-            <td>Python程式語言</td>
+            <td>
+              <a class="modal-trigger" href="#modal1">WEB</a>
+            </td>
+            <td><a class="modal-trigger" href="#modal2">JAVA程式語言</td>
+            <td><a class="modal-trigger" href="#modal3">Python程式語言</td>
             <td>神秘活動</td>
-            <td>C++程式語言</td>
+            <td><a class="modal-trigger" href="#modal4">C++程式語言</td>
             <td>成果發表</td>
           </tr>
           <tr>
@@ -94,12 +96,12 @@
           </tr>
           <tr>
             <td>14:00~17:00</td>
-            <td>遊戲設計Unity3D</td>
-            <td>美宣程式AI，SAI</td>
+            <td><a class="modal-trigger" href="#modal5">遊戲設計Unity3D</td>
+            <td><a class="modal-trigger" href="#modal6">美宣程式AI，SAI</td>
             <td>真人RPG</td>
-            <td>Pygame</td>
-            <td>動畫設計AE</td>
-            <td>RPG&nbsp;Maker</td>
+            <td><a class="modal-trigger" href="#modal7">Pygame</td>
+            <td><a class="modal-trigger" href="#modal8">動畫設計AE</td>
+            <td><a class="modal-trigger" href="#modal9">RPG&nbsp;Maker</td>
             <td>超神秘活動<b>(至晚上9點)</b></td>
           </tr>
         </tbody>
@@ -139,5 +141,207 @@
   <script type="text/javascript">
       $(".button-collapse").sideNav();
 </script>
+<script type="text/javascript">
+    $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+  });
+    $(".button-collapse").sideNav();
+  </script>
+
+    <div id="modal1" class="modal modal-fixed-footer">
+       <div class="modal-content">
+        <h5>WEB課程介紹</h5>
+        <p style="font-size:120%">
+        o   課程簡介<br>
+        打開瀏覽器時看到的網頁，不但有圖片、文字、還可以顯示動畫、聲音...等多媒體效果。要讓這些物件能正確地顯示在瀏覽器中，HTML、JS和CSS這些語言可說是功不可沒。</p>
+         <p style="font-size:120%">
+         o    課程內容<br>
+         本課程將會教一些網頁的基本概念以及HTML基本標籤的使用，在接觸HTML之後，我們將會介紹CSS和JS的用途以及實用的範例。</p>
+         <p style="font-size:120%">
+          o   課程目標<br>
+          發揮自己的創意寫出網頁
+          </p>
+        </div>
+      <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">關閉</a>
+      </div>
+    </div>
+
+    <div id="modal2" class="modal modal-fixed-footer">
+       <div class="modal-content">
+        <h5>JAVA課程介紹</h5>
+        <p style="font-size:120%">
+        o   課程簡介<br>
+        Java是一種電腦程式設計語言，擁有跨平台、物件導向、泛型程式設計的特性，廣泛應用於企業級Web應用開發和行動應用開發。
+        </p>
+         <p style="font-size:120%">
+         o    課程內容<br>
+         以簡單明瞭的實作講解Java重要的性質，讓大家了解這語言的基本概念
+         </p>
+         <p style="font-size:120%">
+          o   課程目標<br>
+          讓大家了解java的基礎使用方式，期望在未來可以實際應用
+          </p>
+        </div>
+      <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">關閉</a>
+      </div>
+    </div> 
+
+    <div id="modal3" class="modal modal-fixed-footer">
+       <div class="modal-content">
+        <h5>Python課程介紹</h5>
+        <p style="font-size:120%">
+        o   課程簡介<br>
+        Python與其他語言相較起來有容易撰寫、功能強大、跨平台、容易擴充等好處，對初學者來說學習上會非常容易上手，目前也被運用於各大企業的開發中，是個現正流行的程式語言。
+        </p>
+         <p style="font-size:120%">
+         o    課程內容<br>
+         會介紹Python的語法與概念，在實做中學習，增進自已的能力
+         </p>
+         <p style="font-size:120%">
+          o   課程目標<br>
+          讓大家了解Python的基礎觀念與實作，也為了下午的Pygame課程打基礎
+          </p>
+        </div>
+      <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">關閉</a>
+      </div>
+    </div>
+
+    <div id="modal4" class="modal modal-fixed-footer">
+       <div class="modal-content">
+        <h5>C/C++課程介紹</h5>
+        <p style="font-size:120%">
+        o   課程簡介<br>
+        由C++的基礎知識開始，教導如何實作C++程式，讓同學透過學習C++的基本運作，認識程式以及其基本架構。
+</p>
+         <p style="font-size:120%">
+         o    課程內容<br>
+         輸入輸出、資料型態與變數、運算元與運算子、if 條件、for 迴圈、while迴圈、一維陣列、字串與陣列
+。</p>
+         <p style="font-size:120%">
+          o   課程目標<br>
+          希望能運用基本的C++知識，並寫出簡單的C++程式。
+          </p>
+        </div>
+      <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">關閉</a>
+      </div>
+    </div> 
+
+    <div id="modal5" class="modal modal-fixed-footer">
+       <div class="modal-content">
+        <h5>Unity 3D課程介紹</h5>
+        <p style="font-size:120%">
+        o   課程簡介<br>
+        Unity 是一套跨平台的免費遊戲引擎，可開發執行於 PC / Mac OS 單機遊戲、iOS / Android 行動裝置的遊戲、PS3 / XBox360 / Wii 遊戲平台的遊戲。Unity 也可開發線上遊戲，玩家只需在瀏覽器安裝外掛程式後即可執行 Unity 開發的遊戲。</p>
+         <p style="font-size:120%">
+         o    課程內容<br>
+         Unity的基本操作、地形編輯器、skybox、光源編輯、粒子系統
+</p>
+         <p style="font-size:120%">
+          o   課程目標<br>
+          在這門課程中，可以學到Unity的基本操作，更加熟悉它的介面，並了解地形編輯器，skybox，光源編輯，粒子系統等製作遊戲會用到的基礎工具。
+          </p>
+        </div>
+      <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">關閉</a>
+      </div>
+    </div> 
+
+    <div id="modal6" class="modal modal-fixed-footer">
+       <div class="modal-content">
+        <h5>AI&nbsp;SAI課程介紹</h5>
+        <p style="font-size:120%">
+        o   課程簡介<br>
+        Adobe illustrater，簡稱AI，是一個能夠畫出許多圖的軟體，也是許多設計師愛用的軟體，我們將會介紹AI的許多功能以及工具的使用方法，只要有方法，技巧不好也能輕鬆畫出好插圖!<br>
+        SAI是一種免費的繪圖軟體，相對於專業且須付費的AI來講，比較普遍地受到廣大的電腦繪圖者所喜愛!操作內容較簡易。
+
+</p>
+         <p style="font-size:120%">
+         o    課程內容AI<br>
+         一開始先介紹幾個基本按鍵及功能，例如:調色、圖層、輸出輸入，接著告訴學員一些效果以及方法還有RGB跟CMYK的分別，然後開始教一些幾何形的畫法，圓形、正方形等，然後再教鋼筆的用法、如何拉線，接著告訴學員要如何調漸層之類的，還可以教如何將圖點陣畫，group還有ungroup。
+</p>
+<p style="font-size:120%">
+         o    課程內容SAI<br>
+         先講述其基本功能(ex:熱鍵、用具、調色)，然後讓學員試玩一下。考量大多數人皆沒有手繪板，所以將教學員如何利用SAI鼠繪，講師會以自己畫的東西來示範，學員則可以先在網路上搜尋自己喜歡的圖片，然後進行嘗試。最後再敘述一點上色的技巧、方法。
+
+</p>
+         <p style="font-size:120%">
+          o   課程目標<br>
+          熟悉這兩種被廣泛運用的繪圖軟體，畫出自己的一片天
+          </p>
+        </div>
+      <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">關閉</a>
+      </div>
+    </div> 
+
+    <div id="modal7" class="modal modal-fixed-footer">
+       <div class="modal-content">
+        <h5>Pygame課程介紹</h5>
+        <p style="font-size:120%">
+        o   課程簡介<br>
+        三小時的課程裡，將會應用上一堂課所學的python語法，
+在更深入教學pygame的實際應用，並發揮出pygame製作遊戲的優點，
+如pygame優化了圖像的處理，在實作方面，我們會帶來『打殭屍』的同人遊戲，課程結束時，學生們將會體驗從零開始製作出一款小遊戲的喜悅感。
+</p>
+         <p style="font-size:120%">
+         o    課程內容<br>
+         介紹pygame的安裝、介紹遊戲的基本邏輯、介紹事件的作用，
+以及自行寫一個物件當遊戲的元素，運用模組完成最後的組合。</p>
+         <p style="font-size:120%">
+          o   課程目標<br>
+          完成自己的『打殭屍』
+          </p>
+        </div>
+      <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">關閉</a>
+      </div>
+    </div> 
+
+    <div id="modal8" class="modal modal-fixed-footer">
+       <div class="modal-content">
+        <h5>AE課程介紹</h5>
+        <p style="font-size:120%">
+        o   課程簡介<br>
+        Adobe After Effects是一套影片製作軟體，現在由Adobe公司提供更新，用於2D和3D合成、用於製作動畫和視覺效果，是基於非線性編輯的軟體。
+</p>
+         <p style="font-size:120%">
+         o    課程內容<br>
+         在這堂課中學習到如何製作基礎動畫，並加上特效(ex:遮罩、渲染、粒子放射等)，以及利用遮罩等做出旋轉、飄移、槍林彈雨等畫面，產生電影特效，並由學員喜好加入相片，藉由放大與縮小產生遠近距離感......等等。
+</p>
+         <p style="font-size:120%">
+          o   課程目標<br>
+          期望能帶著這技術製作出令人驚豔的影片!
+          </p>
+        </div>
+      <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">關閉</a>
+      </div>
+    </div> 
+
+    <div id="modal9" class="modal modal-fixed-footer">
+       <div class="modal-content">
+        <h5>RPG&nbsp;maker課程介紹</h5>
+        <p style="font-size:120%">
+        o   課程簡介<br>
+        RPG Maker是由日本的Enterbrain公司開發的角色扮演遊戲製作軟體，RPG Maker 秉持著一貫的「藉由簡單的操作製作出威力強大的遊戲」這樣的設計理念，使用它的人不用學習任何程式語言，只要在相對的位置輸入文字或設定數值，加上工具中提供了圖片、聲音等等素材檔案，即使不懂繪畫的人，也可以輕易製作出完美的遊戲作品，並且透過網路發表作品！
+</p>
+         <p style="font-size:120%">
+         o    課程內容<br>
+         介紹介面>下載素材>地圖編輯>事件編輯(音樂素材......)>轉場>戰鬥編輯>遊戲輸出</p>
+         <p style="font-size:120%">
+          o   課程目標<br>
+          透過課程學會遊戲製作的技巧，做出專屬於自己的遊戲
+
+          </p>
+        </div>
+      <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">關閉</a>
+      </div>
+    </div> 
 </body>
 </html>
