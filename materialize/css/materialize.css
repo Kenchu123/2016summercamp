@@ -6051,7 +6051,7 @@ form p:last-child {
 
 [type="checkbox"] + label {
   position: relative;
-  padding-left: 35px;
+  padding-left: 20px;
   cursor: pointer;
   display: inline-block;
   height: 25px;
