@@ -5754,7 +5754,7 @@ input[type=tel].validate + label,
 input[type=number].validate + label,
 input[type=search].validate + label,
 textarea.materialize-textarea.validate + label {
-  width: 100%;
+  width: calc(100%-3rem);
   pointer-events: none;
 }
 
