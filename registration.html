@@ -85,19 +85,6 @@
 </body>
 </html>
 
-<script type="text/javascript">
-
-    $('.datepicker').pickadate({
-        selectMonths: true, // Creates a dropdown to control month
-        selectYears: 32 
-    });
-
-    $(".button-collapse").sideNav();
-
-    $(document).ready(function() {
-        $('select').material_select();
-    });
-</script>
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
@@ -272,7 +259,20 @@
       </div>\
     </form>\
   </div>\
-</div>')
+</div>\
+<script type="text/javascript">\
+    \
+    $('.datepicker').pickadate({\
+        selectMonths: true,\
+        selectYears: 32 \
+    });\
+    \
+    $(".button-collapse").sideNav();\
+    \
+    $(document).ready(function() {\
+        $('select').material_select();\
+    });\
+</script>')
                         })
                     }
                     else{
