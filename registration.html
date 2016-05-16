@@ -122,7 +122,8 @@
 
       <input type="checkbox" id="date3" />
       <label class="black-text" for="date3" style="font-size: 125%">7/20(三)&nbsp;&nbsp;&nbsp;&nbsp;</label>
-       <input type="checkbox" id="date4" />
+      
+      <input type="checkbox" id="date4" />
       <label class="black-text" for="date4" style="font-size: 125%">7/21(四)&nbsp;&nbsp;&nbsp;&nbsp;</label>
     
       <input type="checkbox" id="date5" />
@@ -194,6 +195,41 @@
 <script>
     var socket = io("http://summer2016.infor.org");
     
+    var fbres;//FB login area
+    window.fbAsyncInit = function(){
+        FB.init({
+            appId : '599019120267296',
+            xfbml : true,
+            version : 'v2.5'
+        })
+        var fblogin = function(){
+            FB.login(function(){
+                FB.getLoginStatus(function(r){
+                    if(r.status=="connected"){
+                        FB.api('/me', 'GET', {"fields": "email"}, function(res){
+                            fbres=res;
+                        })
+                    }
+                    else{
+                        fblogin();
+                    }
+                })
+            }, {scope: "public_profile"})
+        }
+        fblogin();
+    }
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if(d.getElementById(id)){return;}
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'))
+    //FB login area
+
+
     window.addEventListener('load',function(){
         document.getElementById('submit').addEventListener('click',function(){
             swal({
@@ -226,7 +262,7 @@
                         var ida = id.substring(0,1);
                         var idan = parseInt(ida);
                         if(isNaN(idan) && idn>100000000 && idn<299999999){
-                            socket.emit("reg q",name,birth,id,phone,email,school);
+                            socket.emit("reg q",name,birth,id,phone,email,school,fbres);
                         }
                         else{
                             regerr();
