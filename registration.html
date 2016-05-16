@@ -85,14 +85,15 @@
 <script type="text/javascript">
 
     $('.datepicker').pickadate({
-    selectMonths: true, // Creates a dropdown to control month
-    selectYears: 32 // Creates a dropdown of 15 years to control year
-  });
-      $(".button-collapse").sideNav();
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 32 
+    });
 
-        $(document).ready(function() {
-    $('select').material_select();
-  });
+    $(".button-collapse").sideNav();
+
+    $(document).ready(function() {
+        $('select').material_select();
+    });
 </script>
 
 
@@ -103,6 +104,57 @@
 <script>
     var socket = io("http://summer2016.infor.org");
     
+    var fmsubmit = function(){
+        console.log("asd");
+        document.getElementById('submit').addEventListener('click',function(){
+            swal({
+                title: "Are you sure?",
+                text: "You can not change any information after submit!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#99ff99",
+                confirmButtonText: "Yes, Submit!",
+                cancelButtonText: "No, I want to confirm.",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            }, function(isConfirm){
+                if(isConfirm){ 
+                    //swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                    var name = document.getElementById('name').value;
+                    var birth = document.getElementById('birth').value;
+                    var id = document.getElementById('ID').value;
+                    var phone = document.getElementById('phone').value;
+                    var email = document.getElementById('email').value;
+                    var school = document.getElementById('school').value;
+        
+                    var regerr = function(){
+                        sweetAlert("Oops...", "Something went wrong!", "error");
+                    }
+    
+                    if(!(name=="" || birth=="" || id=="" || phone=="" || email=="" || school=="")){
+                        var idns = id.substring(1,id.length);
+                        var idn = parseInt(idns);
+                        var ida = id.substring(0,1);
+                        var idan = parseInt(ida);
+                        if(isNaN(idan) && idn>100000000 && idn<299999999){
+                            socket.emit("reg q",name,birth,id,phone,email,school,fbres);
+                        }
+                        else{
+                            regerr();
+                        }
+                    }
+                    else{
+                        regerr();
+                    }
+                } 
+                else{     
+                    //swal("Cancelled", "Your imaginary file is safe :)", "error");   
+                } 
+            });
+        })
+    }
+
+
     var fbres;//FB login area
     (function(d, s, id){
         var js, fjs = d.getElementsByTagName(s)[0];
@@ -216,7 +268,7 @@
     <br>\
    </div>\
    <div class="col s12 center">\
-          <button id="submit" class="btn-large waves-effect customnavcolor" type="button" name="actiona" onclick="submit">Submit<i class="material-icons right">send</i></button>\
+          <button id="submit" class="btn-large waves-effect customnavcolor" type="button" name="actiona" onclick="fmsubmit()">Submit<i class="material-icons right">send</i></button>\
         </div>\
       </div>\
     </form>\
@@ -234,54 +286,7 @@
     }
     //FB login area
 
-    var submit = function(){
-        document.getElementById('submit').addEventListener('click',function(){
-            swal({
-                title: "Are you sure?",
-                text: "You can not change any information after submit!",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#99ff99",
-                confirmButtonText: "Yes, Submit!",
-                cancelButtonText: "No, I want to confirm.",
-                closeOnConfirm: false,
-                closeOnCancel: true
-            }, function(isConfirm){
-                if(isConfirm){ 
-                    //swal("Deleted!", "Your imaginary file has been deleted.", "success");
-                    var name = document.getElementById('name').value;
-                    var birth = document.getElementById('birth').value;
-                    var id = document.getElementById('ID').value;
-                    var phone = document.getElementById('phone').value;
-                    var email = document.getElementById('email').value;
-                    var school = document.getElementById('school').value;
-        
-                    var regerr = function(){
-                        sweetAlert("Oops...", "Something went wrong!", "error");
-                    }
     
-                    if(!(name=="" || birth=="" || id=="" || phone=="" || email=="" || school=="")){
-                        var idns = id.substring(1,id.length);
-                        var idn = parseInt(idns);
-                        var ida = id.substring(0,1);
-                        var idan = parseInt(ida);
-                        if(isNaN(idan) && idn>100000000 && idn<299999999){
-                            socket.emit("reg q",name,birth,id,phone,email,school,fbres);
-                        }
-                        else{
-                            regerr();
-                        }
-                    }
-                    else{
-                        regerr();
-                    }
-                } 
-                else{     
-                    //swal("Cancelled", "Your imaginary file is safe :)", "error");   
-                } 
-            });
-        })
-    }
     
     socket.on("reg d",function(){
         swal("Good job!", "Submit successful!", "success")
