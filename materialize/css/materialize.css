@@ -5677,7 +5677,7 @@ input[type=search]:focus.valid + label:after,
 textarea.materialize-textarea.valid + label:after,
 textarea.materialize-textarea:focus.valid + label:after {
   content: attr(data-success);
-  color: #4CAF50;
+  /*color: #4CAF50;*/
   opacity: 1;
 }
 
@@ -5823,7 +5823,7 @@ textarea.materialize-textarea + label:after {
 }
 
 .input-field .prefix ~ label {
-  margin-left: 0rem;
+  margin-left: 3rem;
 }
 
 @media only screen and (max-width: 992px) {
