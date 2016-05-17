@@ -40,7 +40,7 @@ p {
 }
 
 #photo-wall{ 
-    max-width: 1000px; 
+    max-width: 100%; 
 }
 
 #photo-wall li{ 
