@@ -83,12 +83,9 @@
     </div>
   </footer>
 
-</body>
-</html>
+<script type="text/javascript">
 
-<script src="/socket.io/socket.io.js"></script>
-<script>
-  $('.datepicker').pickadate({
+    $('.datepicker').pickadate({
         selectMonths: true, // Creates a dropdown to control month
         selectYears: 32 
     });
@@ -98,7 +95,14 @@
     $(document).ready(function() {
         $('select').material_select();
     });
+</script>
 
+
+</body>
+</html>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
     var socket = io("http://summer2016.infor.org");
     
     var fmsubmit = function(){
