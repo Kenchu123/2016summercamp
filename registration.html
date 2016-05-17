@@ -20,6 +20,7 @@
 </head>
 
 <body>
+
   <div class="navbar-fixed">
     <nav role="navigation" class="customnavcolor">
     <div class="nav-wrapper container">
@@ -52,7 +53,21 @@
     請登入facebook!
     請允許彈出式視窗
 </div>
-<div id="everything"></div>
+<div id="everything">
+  <script>
+
+    $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 32 
+    });
+    
+    $(".button-collapse").sideNav();
+
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+</script>
+</div>
         
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
@@ -82,22 +97,8 @@
       </div>
     </div>
   </footer>
-<script>
-(function($){
-  $(function(){
-
-    $('.button-collapse').sideNav();
-  $('select').material_select();
-  $('.datepicker').pickadate({
-      selectMonths: true, // Creates a dropdown to control month
-      selectYears: 18, // Creates a dropdown of 15 years to control year
-    });
-  }); // end of document ready
-})(jQuery); // end of jQuery name space
-</script>
 </body>
 </html>
-
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
@@ -291,4 +292,18 @@
     socket.on("reg d",function(){
         swal("Good job!", "Submit successful!", "success")
     })
+</script>
+
+<script>
+
+    $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 32 
+    });
+    
+    $(".button-collapse").sideNav();
+
+    $(document).ready(function() {
+        $('select').material_select();
+    });
 </script>
