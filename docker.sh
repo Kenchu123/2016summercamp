@@ -1,5 +1,5 @@
 docker-compose stop
-docker rmi 2016summercamp_web
+docker rmi -f 2016summercamp_web
 docker-compose build
-docker-compose up -d
+docker-compose start
 exit 0
