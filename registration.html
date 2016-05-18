@@ -13,7 +13,6 @@
     <script src="/js/materialize.js"></script>
 
   <!--icon-->
-    <link rel="Shortcut Icon" type="image/x-icon" href="shortcuticon.jpg" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!--sweetalert-->
     <script src="/dist/sweetalert.min.js"></script>
@@ -21,7 +20,6 @@
 </head>
 
 <body>
-
   <div class="navbar-fixed">
     <nav role="navigation" class="customnavcolor">
     <div class="nav-wrapper container">
@@ -54,21 +52,7 @@
     請登入facebook!
     請允許彈出式視窗
 </div>
-<div id="everything">
-  <script>
-
-    $('.datepicker').pickadate({
-        selectMonths: true, // Creates a dropdown to control month
-        selectYears: 32 
-    });
-    
-    $(".button-collapse").sideNav();
-
-    $(document).ready(function() {
-        $('select').material_select();
-    });
-</script>
-</div>
+<div id="everything"></div>
         
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
@@ -157,6 +141,10 @@
 
 
     var fbres;//FB login area
+
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "/js/init.js";
     (function(d, s, id){
         var js, fjs = d.getElementsByTagName(s)[0];
         if(d.getElementById(id)){return;}
@@ -180,7 +168,7 @@
                         FB.api('/me', 'GET', {"fields": "email"}, function(res){
                             fbres=res;
                             $('#wrn').remove();
-                            $('#everything').append('<h2 class="center customtextcolor">報名辦法</h2>\
+                            $('#everything').append(s, '<h2 class="center customtextcolor">報名辦法</h2>\
 <div class="container">\
   <div class="row">\
     <form class="col s12">\
@@ -293,6 +281,7 @@
     socket.on("reg d",function(){
         swal("Good job!", "Submit successful!", "success")
     })
+
 </script>
 
 <script>
@@ -308,3 +297,4 @@
         $('select').material_select();
     });
 </script>
+
