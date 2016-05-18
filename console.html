@@ -1,0 +1,34 @@
+<html>
+<head>
+<title>console</title>
+</head>
+<body>
+
+<input type="password" id="ps">
+<input type="button" id="but">
+
+<div id="res1_app"></div>
+<div id="res2_app"></div>
+
+</body>
+</html>
+
+
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script>
+    var socket = io("http://summer2016.infor.org");
+    
+    document.getElementById('but').onclick=function(){
+        console.log("jizz");
+        var ps=document.getElementById('ps').value;
+        io.emit('mongo q',ps);
+
+        io.on('mongo d',function(res1,res2){
+            $('#res1_app').append(res1);
+            $('#res2_app').append(res2);
+        })
+    }
+</script>
