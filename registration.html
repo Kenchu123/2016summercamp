@@ -90,6 +90,10 @@
 <script>
     var socket = io("https://summer2016.infor.org");
     
+    var regerr = function(){
+        sweetAlert("Oops...", "Something went wrong!", "error");
+    }
+    
     var fmsubmit = function(){
         console.log("asd");
         document.getElementById('submit').addEventListener('click',function(){
@@ -123,17 +127,13 @@
                         date.push(document.getElementById('date'+i).value);
                     }
         
-                    var regerr = function(){
-                        sweetAlert("Oops...", "Something went wrong!", "error");
-                    }
-    
                     if(!(name=="" || birth=="" || id=="" || phone=="" || email=="" || school=="" || emername=="" || emertel=="" || eat=="" || size=="")){
                         var idns = id.substring(1,id.length);
                         var idn = parseInt(idns);
                         var ida = id.substring(0,1);
                         var idan = parseInt(ida);
                         if(isNaN(idan) && idn>100000000 && idn<299999999){
-                            socket.emit("reg q",name,birth,id,phone,email,school,fbres,emername,emertel,eat,size,ps/*,date*/);
+                            socket.emit("reg q",name,birth,id,phone,email,school,fbres,emername,emertel,eat,size,ps,date);
                         }
                         else{
                             regerr();
@@ -143,13 +143,13 @@
                         regerr();
                     }
                 } 
-                else{     
-                    //swal("Cancelled", "Your imaginary file is safe :)", "error");   
-                } 
             });
         })
     }
-
+    
+    socket.on("reg f"){
+        regerr();
+    }
 
     var fbres;//FB login area
     var selectscript = document.createElement("script");
