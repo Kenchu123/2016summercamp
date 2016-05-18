@@ -112,8 +112,8 @@ io.on('connection',function(socket){
                     }
                     db.collection('reg').insert({name:name,birth:birth,id:id,phone:phone,email:email,school:school,fb:fbres,emername:emername,emertel:emertel,eat:eat,size:size,ps:ps,date:date});
                     socket.emit('reg d');
-                }
-            })
+                })
+            }
             else{
                 socket.emit("reg f");
             }
@@ -132,7 +132,7 @@ io.on('connection',function(socket){
         })
     })
     socket.on('mongo q',function(pw){
-        if(pw==config.pass){console.log("jizzin")
+        if(pw==config.pass){
             mongo.connect('mongodb://db:27017/summer2016',function(err,db){console.log("in mongo")
                 if(err){
                     throw err;
