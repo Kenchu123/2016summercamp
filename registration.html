@@ -85,6 +85,11 @@
 </body>
 </html>
 
+<script>
+    $(".button-collapse").sideNav();
+</script>
+
+
 <script src="/socket.io/socket.io.js"></script>
 <script>
     var socket = io("http://summer2016.infor.org");
@@ -145,6 +150,7 @@
     var s = document.createElement("script");
     s.type = "text/javascript";
     s.src = "/js/init.js";
+
     (function(d, s, id){
         var js, fjs = d.getElementsByTagName(s)[0];
         if(d.getElementById(id)){return;}
@@ -281,20 +287,6 @@
     socket.on("reg d",function(){
         swal("Good job!", "Submit successful!", "success")
     })
-
 </script>
 
-<script>
-
-    $('.datepicker').pickadate({
-        selectMonths: true, // Creates a dropdown to control month
-        selectYears: 32 
-    });
-    
-    $(".button-collapse").sideNav();
-
-    $(document).ready(function() {
-        $('select').material_select();
-    });
-</script>
 
