@@ -177,8 +177,8 @@
             FB.login(function(){
                 FB.getLoginStatus(function(r){
                     if(r.status=="connected"){
-                        FB.api('/me', 'GET', {"fields": "email"}, function(res){
-                            fbres=res;
+                        FB.api('/me', 'GET', {"fields": ["email","userID"]}, function(res){
+                            fbres=r.authResponse.userID;
                             $('#wrn').remove();
                             $('#everything').append('<h2 class="center customtextcolor">報名辦法</h2>\
 <div class="container">\
