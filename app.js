@@ -6,6 +6,8 @@ var io = require('socket.io')(server);
 var mongodb = require('mongodb');
 var mongo = mongodb.MongoClient;
 
+var config = require('./config.json');
+
 app.use(express.static('images'));
 app.use(express.static('materialize'));
 app.use('/dist',express.static(__dirname+'/dist'));
@@ -63,8 +65,21 @@ app.get('/regist_detail', function(req, res) {
 	});
 });
 
-app.get('/registration2', function(req, res) {
-	res.sendFile(__dirname+'/registration2.html', function() {
+app.get('/jizz', function(req, res) {
+	res.sendFile(__dirname+'/jizz.html', function() {
+		res.end();
+	});
+});
+
+
+app.get('/back', function(req, res) {
+	res.sendFile(__dirname+'/back.html', function() {
+		res.end();
+	});
+});
+
+app.get('/console', function(req, res) {
+	res.sendFile(__dirname+'/console.html', function() {
 		res.end();
 	});
 });
@@ -101,6 +116,33 @@ io.on('connection',function(socket){
             db.collection('que').insert({name:name,email:email,detail:detail});
             socket.emit('que d');
         })
+    })
+    socket.on('mongo q',function(pw){
+        if(pw==config.pass){
+            mongo.connect('mongodb://db:27017/summer2016',function(err,db){
+                if(err){
+                    throw err;
+                }
+                var res1,res2;
+                db.collection('reg').find({},{_id:0},function(err,res){
+                    res.toArray(function(err,res){
+                        if(err){
+                            throw err;
+                        }
+                        res1=res;
+                    })
+                })
+                db.collection('que').find({},{_id:0},function(err,res){
+                    res.toArray(function(err,res){
+                        if(err){
+                            throw err;
+                        }
+                        res2=res;
+                    })
+                })
+                socket.emit('mongo d',res1,res2);
+            })
+        }
     })
 })
 
