@@ -146,7 +146,9 @@
 
 
     var fbres;//FB login area
-
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "/init";
     
 
     (function(d, s, id){
@@ -171,9 +173,6 @@
                     if(r.status=="connected"){
                         FB.api('/me', 'GET', {"fields": "email"}, function(res){
                             fbres=res;
-                            var script = document.createElement("script");
-                            script.type = "text/javascript";
-                            script.src = "/js/init.js";
                             $('#wrn').remove();
                             $('#everything').append(script, '<h2 class="center customtextcolor">報名辦法</h2>\
 <div class="container">\
