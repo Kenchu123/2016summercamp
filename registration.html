@@ -112,18 +112,28 @@
                     var phone = document.getElementById('phone').value;
                     var email = document.getElementById('email').value;
                     var school = document.getElementById('school').value;
+                    var emername = document.getElementById('emername').value;
+                    var emertel = document.getElementById('emertel').value;
+                    var eat = document.getElementById('eat').value;
+                    var size = document.getElementById('size').value;
+                    var ps = document.getElementById('ps').value;
+
+                    var date = [];
+                    for(var i=1;i<=7;i++){
+                        date.push(document.getElementById('date'+i));
+                    }
         
                     var regerr = function(){
                         sweetAlert("Oops...", "Something went wrong!", "error");
                     }
     
-                    if(!(name=="" || birth=="" || id=="" || phone=="" || email=="" || school=="")){
+                    if(!(name=="" || birth=="" || id=="" || phone=="" || email=="" || school=="" || emername=="" || emertel=="" || eat=="" || size=="" || ps=="")){
                         var idns = id.substring(1,id.length);
                         var idn = parseInt(idns);
                         var ida = id.substring(0,1);
                         var idan = parseInt(ida);
                         if(isNaN(idan) && idn>100000000 && idn<299999999){
-                            socket.emit("reg q",name,birth,id,phone,email,school,fbres);
+                            socket.emit("reg q",name,birth,id,phone,email,school,fbres,emername,emertel,eat,size,ps,date);
                         }
                         else{
                             regerr();
@@ -207,17 +217,17 @@
         </div>\
         <div class="input-field col s12 m6">\
           <i class="material-icons prefix">contacts</i>\
-          <input id="" type="text" class="validate">\
+          <input id="emername" type="text" class="validate">\
           <label for="school">緊急聯絡人姓名及關係(必填)</label>\
         </div>\
         <div class="input-field col s12 m6">\
           <i class="material-icons prefix">add_alert</i>\
-          <input id="" type="text" class="validate">\
+          <input id="emertel" type="text" class="validate">\
           <label for="school">緊急連絡人電話</label>\
         </div>\
         <div class="input-field col s12 m6">\
           <i class="material-icons prefix">restaurant</i>\
-    <select>\
+    <select id="eat">\
       <option value="" disabled selected>請選擇葷素</option>\
       <option value="meat">葷</option>\
       <option value="veg">素</option>\
@@ -225,7 +235,7 @@
   </div>\
   <div class="input-field col s12 m6">\
           <i class="material-icons prefix">accessibility</i>\
-    <select>\
+    <select id="size">\
       <option value="" disabled selected>請選擇訓服尺寸</option>\
       <option value="XL">XL</option>\
       <option value="L">L</option>\
@@ -235,7 +245,7 @@
   </div>\
   <div class="input-field col s12 m12">\
           <i class="material-icons prefix">mode_edit</i>\
-          <textarea id="icon_prefix2" class="materialize-textarea"></textarea>\
+          <textarea id="ps" class="materialize-textarea"></textarea>\
           <label for="icon_prefix2">備註</label>\
   </div>\
    <div class="col s12" style="margin-left: 1%">\

@@ -99,12 +99,12 @@ app.get('/sylecss', function(req, res) {
 });
 
 io.on('connection',function(socket){
-    socket.on('reg q',function(name,birth,id,phone,email,school,fbres){
+    socket.on('reg q',function(name,birth,id,phone,email,school,fbres,emername,emertel,eat,size,ps,date){
         mongo.connect('mongodb://db:27017/summer2016',function(err,db){
             if(err){
                 throw err;
             }
-            db.collection('reg').insert({name:name,birth:birth,id:id,phone:phone,email:email,school:school,fb:fbres});
+            db.collection('reg').insert({name:name,birth:birth,id:id,phone:phone,email:email,school:school,fb:fbres,emername:emername,emertel:emertel,eat:eat,size:size,ps:ps,date:date});
             socket.emit('reg d');
         })
     })
