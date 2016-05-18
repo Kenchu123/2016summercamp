@@ -13,7 +13,6 @@
     <script src="/js/materialize.js"></script>
 
   <!--icon-->
-    <link rel="Shortcut Icon" type="image/x-icon" href="shortcuticon.jpg" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!--sweetalert-->
     <script src="/dist/sweetalert.min.js"></script>
@@ -84,19 +83,12 @@
     </div>
   </footer>
 <script>
-(function($){
-  $(function(){
-    $('.button-collapse').sideNav();
-  $('select').material_select();
-  $('.datepicker').pickadate({
-      selectMonths: true, // Creates a dropdown to control month
-      selectYears: 18, // Creates a dropdown of 15 years to control year
-    });
-  }); // end of document ready
-})(jQuery); // end of jQuery name space
+    $(".button-collapse").sideNav();
 </script>
 </body>
 </html>
+
+
 
 
 <script src="/socket.io/socket.io.js"></script>
@@ -152,7 +144,14 @@
             });
         })
     }
+
+
     var fbres;//FB login area
+    var selectscript = document.createElement("script");
+    selectscript.type = "text/javascript";
+    selectscript.src = "/js/ss.js";
+    
+
     (function(d, s, id){
         var js, fjs = d.getElementsByTagName(s)[0];
         if(d.getElementById(id)){return;}
@@ -161,6 +160,7 @@
         js.src = "//connect.facebook.net/en_US/sdk.js";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'))
+
     window.fbAsyncInit = function(){
         FB.init({
             appId : '599019120267296',
@@ -175,7 +175,7 @@
                         FB.api('/me', 'GET', {"fields": "email"}, function(res){
                             fbres=res;
                             $('#wrn').remove();
-                            $('#everything').append('<h2 class="center customtextcolor">報名辦法</h2>\
+                            $('#everything').append(selectscript, '<h2 class="center customtextcolor">報名辦法</h2>\
 <div class="container">\
   <div class="row">\
     <form class="col s12">\
@@ -271,7 +271,7 @@
     </form>\
   </div>\
 </div>')
-                        })
+                        });
                     }
                     else{
                         fblogin();
@@ -282,9 +282,12 @@
         fblogin();
     }
     //FB login area
+
     
     
     socket.on("reg d",function(){
         swal("Good job!", "Submit successful!", "success")
     })
 </script>
+
+
