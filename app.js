@@ -118,8 +118,8 @@ io.on('connection',function(socket){
         })
     })
     socket.on('mongo q',function(pw){
-        if(pw==config.pass){
-            mongo.connect('mongodb://db:27017/summer2016',function(err,db){
+        if(pw==config.pass){console.log("jizzin")
+            mongo.connect('mongodb://db:27017/summer2016',function(err,db){console.log("in mongo")
                 if(err){
                     throw err;
                 }
@@ -129,18 +129,18 @@ io.on('connection',function(socket){
                         if(err){
                             throw err;
                         }
-                        res1=res;
+                        res1=Object(res);
+                        db.collection('que').find({},{_id:0},function(err,res){
+                            res.toArray(function(err,res){
+                                if(err){
+                                    throw err;
+                                }
+                                res2=Object(res);
+                                socket.emit('mongo d',res1,res2);
+                            })
+                        })
                     })
                 })
-                db.collection('que').find({},{_id:0},function(err,res){
-                    res.toArray(function(err,res){
-                        if(err){
-                            throw err;
-                        }
-                        res2=res;
-                    })
-                })
-                socket.emit('mongo d',res1,res2);
             })
         }
     })

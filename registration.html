@@ -120,20 +120,20 @@
 
                     var date = [];
                     for(var i=1;i<=7;i++){
-                        date.push(document.getElementById('date'+i));
+                        date.push(document.getElementById('date'+i).value);
                     }
         
                     var regerr = function(){
                         sweetAlert("Oops...", "Something went wrong!", "error");
                     }
     
-                    if(!(name=="" || birth=="" || id=="" || phone=="" || email=="" || school=="" || emername=="" || emertel=="" || eat=="" || size=="" || ps=="")){
+                    if(!(name=="" || birth=="" || id=="" || phone=="" || email=="" || school=="" || emername=="" || emertel=="" || eat=="" || size=="")){
                         var idns = id.substring(1,id.length);
                         var idn = parseInt(idns);
                         var ida = id.substring(0,1);
                         var idan = parseInt(ida);
                         if(isNaN(idan) && idn>100000000 && idn<299999999){
-                            socket.emit("reg q",name,birth,id,phone,email,school,fbres,emername,emertel,eat,size,ps,date);
+                            socket.emit("reg q",name,birth,id,phone,email,school,fbres,emername,emertel,eat,size,ps/*,date*/);
                         }
                         else{
                             regerr();

@@ -19,16 +19,25 @@
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script>
-    var socket = io("http://summer2016.infor.org");
+    var socket = io("https://summer2016.infor.org");
     
     document.getElementById('but').onclick=function(){
-        console.log("jizz");
         var ps=document.getElementById('ps').value;
-        io.emit('mongo q',ps);
+        socket.emit('mongo q',ps);
 
-        io.on('mongo d',function(res1,res2){
-            $('#res1_app').append(res1);
-            $('#res2_app').append(res2);
+        socket.on('mongo d',function(res1,res2){
+            for(var i=0;i<res1.length;i++){
+                res1[i] = JSON.stringify(res1[i]);
+            }
+            for(var i=0;i<res2.length;i++){
+                res2[i] = JSON.stringify(res2[i]);
+            }
+
+            var sres1 = res1.toString();
+            var sres2 = res2.toString();
+
+            $('#res1_app').append(sres1);
+            $('#res2_app').append(sres2);
         })
     }
 </script>
