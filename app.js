@@ -83,12 +83,6 @@ app.get('/sylecss', function(req, res) {
 	});
 });
 
-app.get('/init', function(req, res) {
-	res.sendFile(__dirname+'/materialize/js/init.js', function() {
-		res.end();
-	});
-});
-
 io.on('connection',function(socket){
     socket.on('reg q',function(name,birth,id,phone,email,school,fbres){
         mongo.connect('mongodb://db:27017/summer2016',function(err,db){
