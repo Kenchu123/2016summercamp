@@ -110,7 +110,16 @@ io.on('connection',function(socket){
                     if(err){
                         throw err;
                     }
-                    db.collection('reg').insert({name:name,birth:birth,id:id,phone:phone,email:email,school:school,fb:fbres,emername:emername,emertel:emertel,eat:eat,size:size,ps:ps,date:date});
+                    
+                    var obj = {name:name,birth:birth,id:id,phone:phone,email:email,school:school,fb:fbres,emername:emername,emertel:emertel,eat:eat,size:size,ps:ps,date:date};
+                    for(var ele in obj){
+                        obj[ele]=obj[ele].replace(/&/g,"&amp;");
+                        obj[ele]=obj[ele].replace(/</g,"&lt;");
+                        obj[ele]=obj[ele].replace(/>/g,"&gt;");
+                    }
+
+
+                    db.collection('reg').insert(obj);
                     socket.emit('reg d');
                 })
             }
