@@ -48,9 +48,8 @@
   </nav>
 </div>
 
-<div id="wrn">
-    請登入facebook!
-    請允許彈出式視窗<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<div id="wrn" class="l6 s12">
+    <img class="responsive-img" src="/tutorial.jpg"><br><br><br><br><br><br><br><br><br><br>
 </div>
 <div id="everything"></div>
         
@@ -120,7 +119,7 @@
 
                     var date = [];
                     for(var i=1;i<=7;i++){
-                        date.push(document.getElementById('date'+i).value);
+                        date.push(document.getElementById('date'+i).checked);
                     }
         
                     var regerr = function(){
@@ -133,7 +132,7 @@
                         var ida = id.substring(0,1);
                         var idan = parseInt(ida);
                         if(isNaN(idan) && idn>100000000 && idn<299999999){
-                            socket.emit("reg q",name,birth,id,phone,email,school,fbres,emername,emertel,eat,size,ps/*,date*/);
+                            socket.emit("reg q",name,birth,id,phone,email,school,fbres,emername,emertel,eat,size,ps,date);
                         }
                         else{
                             regerr();
@@ -252,25 +251,25 @@
 <p style="font-size: 125%">※哪些天<font color="#FF0000"><b>"無法"</b></font>出席</p>\
     <p>\
       <input type="checkbox" id="date1" />\
-      <label class="black-text" for="date1" style="font-size: 125%">7/18(一)&nbsp;&nbsp;&nbsp;&nbsp;</label>\
+      <label class="black-text" for="date1" style="font-size: 125%">7/20(三)&nbsp;&nbsp;&nbsp;&nbsp;</label>\
 \
       <input type="checkbox" id="date2" />\
-      <label class="black-text" for="date2" style="font-size: 125%">7/19(二)&nbsp;&nbsp;&nbsp;&nbsp;</label>\
+      <label class="black-text" for="date2" style="font-size: 125%">7/21(四)&nbsp;&nbsp;&nbsp;&nbsp;</label>\
 \
       <input type="checkbox" id="date3" />\
-      <label class="black-text" for="date3" style="font-size: 125%">7/20(三)&nbsp;&nbsp;&nbsp;&nbsp;</label>\
+      <label class="black-text" for="date3" style="font-size: 125%">7/22(五)&nbsp;&nbsp;&nbsp;&nbsp;</label>\
       \
       <input type="checkbox" id="date4" />\
-      <label class="black-text" for="date4" style="font-size: 125%">7/21(四)&nbsp;&nbsp;&nbsp;&nbsp;</label>\
+      <label class="black-text" for="date4" style="font-size: 125%">7/23(六)&nbsp;&nbsp;&nbsp;&nbsp;</label>\
     \
       <input type="checkbox" id="date5" />\
-      <label class="black-text" for="date5" style="font-size: 125%">7/22(五)&nbsp;&nbsp;&nbsp;&nbsp;</label>\
+      <label class="black-text" for="date5" style="font-size: 125%">7/24(日)&nbsp;&nbsp;&nbsp;&nbsp;</label>\
     \
       <input type="checkbox" id="date6" />\
-      <label class="black-text" for="date6" style="font-size: 125%">7/23(六)&nbsp;&nbsp;&nbsp;&nbsp;</label>\
+      <label class="black-text" for="date6" style="font-size: 125%">7/25(一)&nbsp;&nbsp;&nbsp;&nbsp;</label>\
     \
       <input type="checkbox" id="date7" />\
-      <label class="black-text" for="date7" style="font-size: 125%">7/24(日)&nbsp;&nbsp;&nbsp;&nbsp;</label>\
+      <label class="black-text" for="date7" style="font-size: 125%">7/26(二)&nbsp;&nbsp;&nbsp;&nbsp;</label>\
     </p>\
     <br>\
    </div>\
