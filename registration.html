@@ -48,8 +48,22 @@
   </nav>
 </div>
 
+<<<<<<< HEAD
 <div id="wrn" class="l6 s12">
     <img class="responsive-img" src="/tutorial.jpg"><br><br><br><br><br><br><br><br><br><br>
+=======
+<div id="wrn">
+  <div class="row">
+    <div class="col s12">
+      <img class="materialboxed" src="/login_turtorial.png" width="100%">
+      <script type="text/javascript">
+        $(document).ready(function(){
+        $('.materialboxed').materialbox();
+       });
+      </script>
+    </div>
+  </div>
+>>>>>>> f6b8922c1f10a93ccd2c1210e321ea4e6f9f63e1
 </div>
 <div id="everything"></div>
         
@@ -89,6 +103,10 @@
 <script>
     var socket = io("https://summer2016.infor.org");
     
+    var regerr = function(){
+        sweetAlert("Oops...", "Something went wrong!", "error");
+    }
+    
     var fmsubmit = function(){
         console.log("asd");
         document.getElementById('submit').addEventListener('click',function(){
@@ -122,10 +140,6 @@
                         date.push(document.getElementById('date'+i).checked);
                     }
         
-                    var regerr = function(){
-                        sweetAlert("Oops...", "Something went wrong!", "error");
-                    }
-    
                     if(!(name=="" || birth=="" || id=="" || phone=="" || email=="" || school=="" || emername=="" || emertel=="" || eat=="" || size=="")){
                         var idns = id.substring(1,id.length);
                         var idn = parseInt(idns);
@@ -142,13 +156,13 @@
                         regerr();
                     }
                 } 
-                else{     
-                    //swal("Cancelled", "Your imaginary file is safe :)", "error");   
-                } 
             });
         })
     }
-
+    
+    socket.on("reg f"){
+        regerr();
+    }
 
     var fbres;//FB login area
     var selectscript = document.createElement("script");
