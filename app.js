@@ -105,7 +105,9 @@ io.on('connection',function(socket){
             var idn = parseInt(idns);
             var ida = id.substring(0,1);
             var idan = parseInt(ida);
-            if(isNaN(idan) && idn>100000000 && idn<299999999){
+            var phonen = parseInt(phone);
+            var emerteln = parseInt(emertel);
+            if(isNaN(idan) && idn>100000000 && idn<299999999 && !isNaN(phonen) && !isNaN(emerteln)){
                 mongo.connect('mongodb://db:27017/summer2016',function(err,db){
                     if(err){
                         throw err;
@@ -113,11 +115,11 @@ io.on('connection',function(socket){
                     
                     var obj = {name:name,birth:birth,id:id,phone:phone,email:email,school:school,fb:fbres,emername:emername,emertel:emertel,eat:eat,size:size,ps:ps,date:date};
                     for(var ele in obj){
-			if(ele==name||ele==birth||ele==id||ele==phone||ele==email||ele==school||ele==fbres||ele==emername||ele==emertel||ele==eat||ele==size||ele==ps){
-			    obj[ele]=obj[ele].replace(/&/g,"&amp;");
-			    obj[ele]=obj[ele].replace(/</g,"&lt;");
-			    obj[ele]=obj[ele].replace(/>/g,"&gt;");
-			}
+                        if(ele==name||ele==birth||ele==id||ele==phone||ele==email||ele==school||ele==fbres||ele==emername||ele==emertel||ele==eat||ele==size||ele==ps){
+                            obj[ele]=obj[ele].replace(/&/g,"&amp;");
+                            obj[ele]=obj[ele].replace(/</g,"&lt;");
+                            obj[ele]=obj[ele].replace(/>/g,"&gt;");
+                        }
                     }
 
 
@@ -138,7 +140,14 @@ io.on('connection',function(socket){
             if(err){
                 throw err;
             }
-            db.collection('que').insert({name:name,email:email,detail:detail});
+            
+            var obj = {name:name,email:email,detail:detail};
+            for(var ele in obj){
+                obj[ele]=obj[ele].replace(/&/g,"&amp;");
+                obj[ele]=obj[ele].replace(/</g,"&lt;");
+                obj[ele]=obj[ele].replace(/>/g,"&gt;");
+            }
+            db.collection('que').insert(obj);
             socket.emit('que d');
         })
     })
