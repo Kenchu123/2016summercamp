@@ -30,39 +30,24 @@
         socket.emit('mongo q',ps);
 
         socket.on('mongo d',function(res1,res2){
-
+            
+            var app1 = "",app2 = "";
             for(var i=0;i<res1.length;i++){
-                $('#tab1').append('<tr>');
+                app1 += '<tr>';
                 for(var ele in res1[i]){
-                    $('#tab1').append('<td>'+res1[i][ele]+'</td>');
+                    app1 += ('<td>'+res1[i][ele]+'</td>');
                 }
-                $('#tab1').append('</tr>');
+                app1 += '</tr>'
             }
+            $('#tab1').append(app1);            
             for(var i=0;i<res2.length;i++){
-                $('#tab2').append('<tr>');
+                app2 += '<tr>';
                 for(var ele in res2[i]){
-                    $('#tab2').append('<td>'+res2[i][ele]+'</td>');
+                    app2 += ('<td>'+res2[i][ele]+'</td>');
                 }
-                $('#tab2').append('</tr>');
+                app2 += '</tr>'
             }
-
-
-
-            for(var i=0;i<res1.length;i++){
-                res1[i] = JSON.stringify(res1[i])+'<br>';
-            }
-            for(var i=0;i<res2.length;i++){
-                res2[i] = JSON.stringify(res2[i])+'<br>';
-            }
-
-            var sres1 = 'reg<br><br>'+res1.toString();
-            var sres2 = '<br><br>Q and A<br><br>'+res2.toString();
-
-            sres1 = sres1.replace(/}<br>,{\"n/g,"}<br>{\"n");
-            sres2 = sres2.replace(/}<br>,{\"n/g,"}<br>{\"n");
-
-            $('#res1_app').append(sres1);
-            $('#res2_app').append(sres2);
+            $('#tab2').append(app2);
 
             $('#ps').remove();
             $('#but').remove();
