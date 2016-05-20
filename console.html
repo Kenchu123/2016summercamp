@@ -7,6 +7,10 @@
 <input type="password" id="ps">
 <input type="button" id="but">
 
+<table id="tab1"></table><br><br><br>
+<table id="tab2"></table><br><br><br>
+
+
 <div id="res1_app"></div>
 <div id="res2_app"></div>
 
@@ -26,6 +30,24 @@
         socket.emit('mongo q',ps);
 
         socket.on('mongo d',function(res1,res2){
+
+            for(var i=0;i<res1.length;i++){
+                $('#tab1').append('<tr>');
+                for(var ele in res1[i]){
+                    $('#tab1').append('<td>'+res1[i][ele]+'</td>');
+                }
+                $('#tab1').append('</tr>');
+            }
+            for(var i=0;i<res2.length;i++){
+                $('#tab2').append('<tr>');
+                for(var ele in res2[i]){
+                    $('#tab2').append('<td>'+res2[i][ele]+'</td>');
+                }
+                $('#tab2').append('</tr>');
+            }
+
+
+
             for(var i=0;i<res1.length;i++){
                 res1[i] = JSON.stringify(res1[i])+'<br>';
             }
@@ -41,6 +63,9 @@
 
             $('#res1_app').append(sres1);
             $('#res2_app').append(sres2);
+
+            $('#ps').remove();
+            $('#but').remove();
         })
     }
 </script>
