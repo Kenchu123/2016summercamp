@@ -8,6 +8,8 @@ var mongo = mongodb.MongoClient;
 
 var config = require('./config.json');
 
+var when;
+
 app.use(express.static('images'));
 app.use(express.static('materialize'));
 app.use('/dist',express.static(__dirname+'/dist'));
@@ -98,6 +100,19 @@ app.get('/sylecss', function(req, res) {
 	});
 });
 
+setInterval(function() {
+    var month = new Date().getMonth()+1;
+    var now = new Date().getFullYear().toString()+"-"+month.toString()+"-"+new Date().getDate().toString()+" ";
+    if(new Date().getHours()<10){var nnow=now+"0"+new Date().getHours().toString()+":";}
+        else{var nnow=now+new Date().getHours().toString()+":";}
+    if(new Date().getMinutes()<10){var nnnow=nnow+"0"+new Date().getMinutes().toString()+":";}
+        else{var nnnow=nnow+new Date().getMinutes().toString()+":";}
+    if(new Date().getSeconds()<10){var nnnnow=nnnow+"0"+new Date().getSeconds().toString();}
+        else{var nnnnow=nnnow+new Date().getSeconds().toString();}
+    when = nnnnow;
+  }, 1000);
+
+
 io.on('connection',function(socket){
     socket.on('reg q',function(name,birth,id,phone,email,school,fbres,emername,emertel,eat,size,ps,date){
         if(!(name==""||birth==""||id==""||phone==""||email==""||school==""||emername=="" || emertel=="" || eat=="" || size=="")){
@@ -113,7 +128,7 @@ io.on('connection',function(socket){
                         throw err;
                     }
                     
-                    var obj = {name:name,birth:birth,id:id,phone:phone,email:email,school:school,fb:fbres,emername:emername,emertel:emertel,eat:eat,size:size,ps:ps,date:date};
+                    var obj = {time:when,name:name,birth:birth,id:id,phone:phone,email:email,school:school,fb:fbres,emername:emername,emertel:emertel,eat:eat,size:size,ps:ps,date:date};
                     for(var ele in obj){
                         if(ele==name||ele==birth||ele==id||ele==phone||ele==email||ele==school||ele==fbres||ele==emername||ele==emertel||ele==eat||ele==size||ele==ps){
                             obj[ele]=obj[ele].replace(/&/g,"&amp;");
