@@ -113,9 +113,11 @@ io.on('connection',function(socket){
                     
                     var obj = {name:name,birth:birth,id:id,phone:phone,email:email,school:school,fb:fbres,emername:emername,emertel:emertel,eat:eat,size:size,ps:ps,date:date};
                     for(var ele in obj){
-                        obj[ele]=obj[ele].replace(/&/g,"&amp;");
-                        obj[ele]=obj[ele].replace(/</g,"&lt;");
-                        obj[ele]=obj[ele].replace(/>/g,"&gt;");
+			if(ele==name||ele==birth||ele==id||ele==phone||ele==email||ele==school||ele==fbres||ele==emername||ele==emertel||ele==eat||ele==size||ele==ps){
+			    obj[ele]=obj[ele].replace(/&/g,"&amp;");
+			    obj[ele]=obj[ele].replace(/</g,"&lt;");
+			    obj[ele]=obj[ele].replace(/>/g,"&gt;");
+			}
                     }
 
 
