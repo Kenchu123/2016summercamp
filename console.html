@@ -24,7 +24,7 @@
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script>
     var socket = io("https://summer2016.infor.org");
-    
+    var append = false;
     document.getElementById('but').onclick=function(){
         var ps=document.getElementById('ps').value;
         socket.emit('mongo q',ps);
@@ -39,7 +39,6 @@
                 }
                 app1 += '</tr>'
             }
-            $('#tab1').append(app1);            
             for(var i=0;i<res2.length;i++){
                 app2 += '<tr>';
                 for(var ele in res2[i]){
@@ -47,7 +46,11 @@
                 }
                 app2 += '</tr>'
             }
-            $('#tab2').append(app2);
+            if(!append){
+                $('#tab1').append(app1);            
+                $('#tab2').append(app2);
+                append=true;
+            }
 
             $('#ps').remove();
             $('#but').remove();
