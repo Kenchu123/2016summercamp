@@ -168,7 +168,7 @@ io.on('connection',function(socket){
     })
     socket.on('mongo q',function(pw){
         if(pw==config.pass){
-            mongo.connect('mongodb://db:27017/summer2016',function(err,db){console.log("in mongo")
+            mongo.connect('mongodb://db:27017/summer2016',function(err,db){
                 if(err){
                     throw err;
                 }
