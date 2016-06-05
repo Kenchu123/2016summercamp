@@ -101,7 +101,16 @@
     var regerr = function(){
         sweetAlert("Oops...", "Something went wrong!", "error");
     }
-    
+
+    swal({
+        title: "Jizz!",
+        text: "Registration is not availiable now!",
+        type: "error",
+        },function(){
+            window.location = "https://summer2016.infor.org/"
+        });
+
+/*
     var fmsubmit = function(){
         console.log("asd");
         document.getElementById('submit').addEventListener('click',function(){
@@ -300,7 +309,7 @@
         fblogin();
     }
     //FB login area
-
+*/
     
     
     socket.on("reg d",function(){
