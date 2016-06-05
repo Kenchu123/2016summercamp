@@ -55,11 +55,11 @@ app.get('/comments', function(req, res) {
 });
 
 
-/*app.get('/registration', function(req, res) {
+app.get('/registration', function(req, res) {
 	res.sendFile(__dirname+'/registration.html', function() {
 		res.end();
 	});
-});*/
+});
 
 app.get('/regist_detail', function(req, res) {
 	res.sendFile(__dirname+'/regist_detail.html', function() {
