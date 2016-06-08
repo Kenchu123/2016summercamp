@@ -30,7 +30,7 @@
 <script>
     var socket = io("https://summer2016.infor.org");
     var append = false;
-    document.getElementById('but').onclick=function(){
+    var sendreq = function(){
         var ps=document.getElementById('ps').value;
         socket.emit('mongo q',ps);
 
@@ -40,7 +40,12 @@
             for(var i=0;i<res1.length;i++){
                 app1 += '<tr>';
                 for(var ele in res1[i]){
-                    app1 += ('<td>'+res1[i][ele]+'</td>');
+                    if(ele=="fb"){
+                        app1 += "<td><a href='http://facebook.com/app_scoped_user_id/"+res1[i][ele]+"'>FB</a></td>";
+                    }
+                    else{
+                        app1 += ('<td>'+res1[i][ele]+'</td>');
+                    }
                 }
                 app1 += '</tr>'
             }
@@ -61,4 +66,10 @@
             $('#but').remove();
         })
     }
+    document.getElementById('ps').addEventListener('keypress', function(e){
+        if(e.keyCode === 13){
+            sendreq();
+        }
+    })
+    document.getElementById('but').onclick = sendreq();
 </script>
