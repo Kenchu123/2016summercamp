@@ -36,9 +36,9 @@
         var ps=document.getElementById('ps').value;
         socket.emit('mongo q',ps);
 
-        socket.on('mongo d',function(res1,res2,2res1){
+        socket.on('mongo d',function(res1,res2,res12){
             
-            var app1 = "",app2 = "",2app1 = "";
+            var app1 = "",app2 = "",app12 = "";
             for(var i=0;i<res1.length;i++){
                 app1 += '<tr>';
                 for(var ele in res1[i]){
@@ -51,17 +51,17 @@
                 }
                 app1 += '</tr>';
             }
-            for(var i=0;i<2res1.length;i++){
-                2app1 += '<tr>';
-                for(var ele in 2res1[i]){
+            for(var i=0;i<res12.length;i++){
+                app12 += '<tr>';
+                for(var ele in res12[i]){
                     if(ele=="fb"){
-                        2app1 += "<td><a href='http://facebook.com/app_scoped_user_id/"+2res1[i][ele]+"'>FB</a></td>";
+                        app12 += "<td><a href='http://facebook.com/app_scoped_user_id/"+res12[i][ele]+"'>FB</a></td>";
                     }
                     else{
-                        2app1 += ('<td>'+2res1[i][ele]+'</td>');
+                        app12 += ('<td>'+res12[i][ele]+'</td>');
                     }
                 }
-                2app1 += '</tr>';
+                app12 += '</tr>';
             }
             for(var i=0;i<res2.length;i++){
                 app2 += '<tr>';
@@ -73,7 +73,7 @@
             if(!append){
                 $('#tab1').append(app1);            
                 $('#tab2').append(app2);
-                $('#2tab1').append(2app1);
+                $('#2tab1').append(app12);
                 append=true;
             }
 

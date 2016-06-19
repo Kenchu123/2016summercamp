@@ -172,7 +172,7 @@ io.on('connection',function(socket){
                 if(err){
                     throw err;
                 }
-                var res1,2res1,res2;
+                var res1,res12,res2;
                 db.collection('reg').find({},{_id:0},function(err,res){
                     res.toArray(function(err,res){
                         if(err){
@@ -190,8 +190,8 @@ io.on('connection',function(socket){
                                         if(err){
                                             throw err;
                                         }
-                                        2res1=Object(res)
-                                        socket.emit('mongo d',res1,res2,2res1);
+                                        res12=Object(res)
+                                        socket.emit('mongo d',res1,res2,res12);
                                     })
                                 })
                             })
