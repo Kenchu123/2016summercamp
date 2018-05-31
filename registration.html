@@ -175,26 +175,35 @@
     
 
     (function(d, s, id){
+        console.log("jizzforever")
         var js, fjs = d.getElementsByTagName(s)[0];
         if(d.getElementById(id)){return;}
         js = d.createElement(s);
         js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js";
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'))
 
+    var fblogin;
     window.fbAsyncInit = function(){
+        console.log("jizz0")
         FB.init({
             appId : '599019120267296',
             channelUrl : 'http://summer2016.infor.org/registration',
             xfbml : true,
             version : 'v2.6'
         })
-        var fblogin = function(){
+        console.log("jizz-1")
+        /*var */fblogin = function(){
+            console.log("jizz1")
             FB.login(function(){
+                console.log("jizz2")
                 FB.getLoginStatus(function(r){
+                    console.log("jizz3")
                     if(r.status=="connected"){
+                        console.log("jizz4")
                         FB.api('/me', 'GET', {"fields": ["email","userID"]}, function(res){
+                            console.log("jizz5")
                             fbres=r.authResponse.userID;
                             $('#wrn').remove();
                             $('#everything').append('<h2 class="center customtextcolor">報名辦法</h2>\
@@ -301,6 +310,7 @@
                         });
                     }
                     else{
+                        console.log("jizz6")
                         fblogin();
                     }
                 })
@@ -309,7 +319,6 @@
         fblogin();
     }
     //FB login area
-
     
     
     socket.on("reg d",function(){
